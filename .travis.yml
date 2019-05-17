@@ -6,4 +6,4 @@ before_install:
   - docker build -t rockman25/topsy-react -f Dockerfile.dev .
  
 script:
-  - docker run rockman25/topsy-react npm run test -- --coverage
+  - docker run -e CI=true rockman25/topsy-react npm run test -- --watchAll=false
