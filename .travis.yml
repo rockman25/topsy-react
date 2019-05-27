@@ -7,3 +7,16 @@ before_install:
  
 script:
   - docker run -e CI=true rockman25/topsy-react npm run test -- --watchAll=false
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "topsy-react"
+  env: "TopsyReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-789458539685"
+  bucket_path: "topsy-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
